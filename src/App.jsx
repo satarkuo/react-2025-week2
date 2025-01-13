@@ -150,12 +150,19 @@ function App() {
                     <p className="card-text">產品描述：{tempProduct.description}</p>
                     <p className="card-text">產品內容：{tempProduct.content}</p>
                     <p className="card-text"><del className="text-secondary">{tempProduct.origin_price} 元</del> / {tempProduct.price}元</p>
-                    <h5 className="card-title">更多圖片：</h5>
-                    <div className="d-flex flex-wrap mb-3">
-                      {tempProduct.imagesUrl?.map((url, index) => (
-                        <img key={index} className="images object-fit me-3 mb-3" src={url}  alt="更多圖片" />
-                      ))}
-                    </div>
+                    { tempProduct.imagesUrl?.length > 0 ? (
+                      <>
+                        <h5 className="card-title">更多圖片：</h5>
+                        <div className="d-flex flex-wrap mb-3">
+                          {tempProduct.imagesUrl?.map((url, index) => (
+                            <img key={index} className="images object-fit me-3 mb-3" src={url}  alt="更多圖片" />
+                          ))}
+                        </div>
+                      </>
+                    ) : (
+                      ""
+                    )}
+                    
                     <a href="#" className="btn btn-primary" onClick={() => setTempProduct()}>關閉</a>
                   </div>
                 </div>
